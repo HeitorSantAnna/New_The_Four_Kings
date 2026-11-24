@@ -1,41 +1,52 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Vector2 move = new Vector2();
 
-    Vector3 movimentVert, movimentHori;
+    Vector3 velocity;
 
     CharacterController Cc;
-
-    [SerializeField] GameObject player;
 
     [SerializeField] float speed = 2;
 
     float gravity = -9.8f;
-    float VelVertical;
 
     void Start()
     {
-        Cc = player.GetComponent<CharacterController>();
+        Cc = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        VelVertical += gravity * Time.deltaTime;
+        Vector3 horiMove = transform.right * move.x + transform.up * move.y;
 
-        movimentVert = transform.up * VelVertical;
+        velocity.y += gravity * Time.deltaTime;
 
-        movimentHori = (transform.right * move.x);
-        
-        Cc.Move((movimentHori * speed + movimentVert) * Time.deltaTimes);
+        Vector3 moviment = horiMove * speed + Vector3.up * velocity.y;
+
+        Cc.Move(moviment * Time.deltaTime);
     }
 
 #region InputAction
-    public void Move(InputAction.CallbackContext value)
+    public void Movement(InputAction.CallbackContext value)
     {
         move = value.ReadValue<Vector2>();
+    }
+
+    public void Jump(InputAction.CallbackContext value)
+    {
+        if(value.performed)
+        {
+            return;
+        }
+
+        if(value.ReadValue<float>() >= 0.5)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 30, 0);
+        }
     }
 #endregion
 }
