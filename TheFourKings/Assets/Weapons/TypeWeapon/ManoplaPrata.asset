@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfadb0a4fa693891bd9dd8b52233fe3, type: 3}
+  m_Name: ManoplaPrata
+  m_EditorClassIdentifier: Assembly-CSharp::Manoplas
+  ID: '#002'
+  name: Manopla de Prata
+  damage: 3
+  rangeDa: 2
+  IsMagic: 0
+  IsMartial: 1
+  typemagic: 0
