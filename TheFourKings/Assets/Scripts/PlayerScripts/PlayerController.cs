@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +10,8 @@ public class PlayerController : MonoBehaviour
     CharacterController Cc;
 
     [SerializeField] float speed = 2;
+
+    string IDweapon;
 
     float gravity = -9.8f;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         move = value.ReadValue<Vector2>();
     }
 
+    //Rever
     public void Jump(InputAction.CallbackContext value)
     {
         if(value.performed)
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         if(value.ReadValue<float>() >= 0.5)
         {
+            Debug.Log("Player pulou");
             transform.position = new Vector3(transform.position.x, transform.position.y + 30, 0);
         }
     }
