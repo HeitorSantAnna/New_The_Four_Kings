@@ -17,11 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject player;
 
-    string IDweapon;
-
-    float rechardTime = 10;
-
-    [SerializeField] int numberjumps = 1;
+    [SerializeField] int jumps = 1;
 
     float gravity = -9.8f;
 
@@ -40,9 +36,9 @@ public class PlayerController : MonoBehaviour
 
         Cc.Move(moviment * Time.deltaTime);
 
-        if(Cc.isGrounded == true && numberjumps == 0)
+        if(Cc.isGrounded == true && jumps == 0)
         {
-            numberjumps++;
+            jumps++;
         }
     }
 
@@ -74,10 +70,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(value.ReadValue<float>() >= 0.5 && numberjumps > 0)
+        if(value.ReadValue<float>() >= 0.5 && jumps > 0)
         {
             velocity.y = 7;
-            numberjumps--;
+            jumps--;
         }
     }
 
